@@ -1,4 +1,6 @@
-module.exports = {
+const withCSS = require('@zeit/next-css');
+
+module.exports = withCSS({
     webpack: config => {
         config.resolve.modules = [__dirname, ...config.resolve.modules];
 
@@ -21,4 +23,4 @@ module.exports = {
 
         return config;
     }
-};
+});
