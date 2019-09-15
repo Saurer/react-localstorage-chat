@@ -1,0 +1,66 @@
+{
+    "name": "react-app-template",
+    "version": "3.1.0",
+    "main": "./src/electron/index.js",
+    "license": "MIT",
+    "author": {
+        "name": "Saurer",
+        "url": "https://github.com/Saurer"
+    },
+    "scripts": {
+        "dev": "next src/app",
+        "build": "next build src/app && next export src/app -o build",
+        "start": "next start src/app",
+        "export": "yarn build && next export",
+        "start-desktop": "electron .",
+        "package": "yarn run build && build --dir",
+        "release": "yarn run build && build",
+        "test": "jest"
+    },
+    "build": {
+        "asar": true,
+        "directories": {
+            "output": "releases"
+        },
+        "files": [
+            "./src/electron/**/*",
+            {
+                "from": "build",
+                "to": "src/app/out"
+            }
+        ]
+    },
+    "dependencies": {
+        "electron-is-dev": "^1.1.0",
+        "electron-next": "^3.1.5"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "@emotion/babel-preset-css-prop": "^10.0.14",
+        "@emotion/core": "^10.0.16",
+        "@types/jest": "^24.0.15",
+        "@types/react": "^16.8.22",
+        "@typescript-eslint/eslint-plugin": "^2.0.0",
+        "@typescript-eslint/parser": "^2.0.0",
+        "electron": "^5.0.5",
+        "electron-builder": "^20.44.4",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.14.0",
+        "eslint": "^6.2.1",
+        "eslint-config-prettier": "^6.1.0",
+        "eslint-loader": "^2.2.1",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-react": "^7.14.3",
+        "eslint-plugin-react-hooks": "^2.0.1",
+        "jest": "^24.8.0",
+        "mobx": "^5.13.0",
+        "mobx-react-lite": "^1.4.1",
+        "mobx-state-tree": "^3.14.1",
+        "next": "^9.0.0",
+        "prettier": "^1.18.2",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "ts-jest": "^24.0.2",
+        "typescript": "^3.5.2"
+    }
+}
