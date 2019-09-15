@@ -18,11 +18,36 @@ const Login: React.FC = () => {
 
     return useObserver(() => (
         <div>
-            <h1>User: {store.user}</h1>
-            <div>
-                <input type="text" value={name} onChange={handleChange} />
-                <button onClick={handleLogin}>Login</button>
+            <div className="jumbotron">
+                <h1 className="display-4">React Localstorage Chat</h1>
+                <p className="lead">
+                    This is a simple cross-tab communication using LocalStorage
+                    API and storage event presented as a chat
+                </p>
+                <hr className="my-4" />
+                <p>
+                    Enter your name to begin using this application. It will not
+                    be sent anywhere. All communication uses localstorage API
+                    only
+                </p>
             </div>
+            <div className="form-group">
+                <label htmlFor="user">Enter your name</label>
+                <input
+                    id="user"
+                    type="text"
+                    className="form-control"
+                    value={name}
+                    onChange={handleChange}
+                />
+            </div>
+            <button
+                className="btn btn-primary"
+                disabled={0 === name.length}
+                onClick={handleLogin}
+            >
+                Login
+            </button>
         </div>
     ));
 };

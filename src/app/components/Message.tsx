@@ -1,16 +1,11 @@
 import { css } from '@emotion/core';
-import Clearfix from './Clearfix';
 import classNames from 'classnames';
 
 const messageStyle = css`
-    margin: 5px;
     float: right;
 
     > .message__sender {
         text-align: right;
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 4px;
     }
 
     > .message__body {
@@ -41,15 +36,17 @@ interface Props {
 }
 
 const Message: React.FC<Props> = props => (
-    <Clearfix>
+    <div className="clearfix">
         <div
             css={messageStyle}
-            className={classNames({ message_own: props.isOwn })}
+            className={classNames('m-2', {
+                message_own: props.isOwn
+            })}
         >
-            <div className="message__sender">{props.sender}</div>
+            <h6 className="message__sender mb-1">{props.sender}</h6>
             <div className="message__body">{props.children}</div>
         </div>
-    </Clearfix>
+    </div>
 );
 
 export default Message;

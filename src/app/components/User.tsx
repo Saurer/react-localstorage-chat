@@ -1,21 +1,6 @@
 import { useContext } from 'react';
 import StoreContext from './StoreContext';
-import { css } from '@emotion/core';
 import { useObserver } from 'mobx-react-lite';
-
-const userStyle = css`
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-
-    > .user__data {
-        flex: 1;
-    }
-
-    > .user__data__name {
-        font-weight: bold;
-    }
-`;
 
 const User: React.FC = () => {
     const store = useContext(StoreContext);
@@ -29,14 +14,23 @@ const User: React.FC = () => {
     };
 
     return useObserver(() => (
-        <div css={userStyle}>
-            <div className="user__data">
-                <span>Logged as:</span>
-                <span className="user__data__name">{store.user}</span>
+        <div className="row pb-3">
+            <div className="col-6">
+                <h4>
+                    <span>Logged as:</span>
+                    <span>&nbsp;</span>
+                    <span className="user__data__name">{store.user}</span>
+                </h4>
             </div>
-            <div>
-                <button onClick={handleLogout}>Logout</button>
-                <button onClick={handleClear}>Clear chat data</button>
+            <div className="col-6 text-right">
+                <div className="btn-group">
+                    <button className="btn btn-warning" onClick={handleLogout}>
+                        Logout
+                    </button>
+                    <button className="btn btn-danger" onClick={handleClear}>
+                        Clear chat data
+                    </button>
+                </div>
             </div>
         </div>
     ));
